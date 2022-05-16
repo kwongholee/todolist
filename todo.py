@@ -41,7 +41,7 @@ class TodoPost(Resource):
 @Todo.doc(params={'todo_id': 'An ID'})
 class TodoSimple(Resource):
     @Todo.response(200, 'Success', todo_fields_with_id)
-    @Todo.response(500, 'Failed')
+    @Todo.response(400, 'Failed')
     def get(self, todo_id):
         """Todo 리스트에 todo_id와 일치하는 ID를 가진 할 일을 불러옴(조회)"""
         return {
@@ -50,7 +50,7 @@ class TodoSimple(Resource):
         }
     
     @Todo.response(202, 'Success', todo_fields_with_id)
-    @Todo.response(500, 'Failed')
+    @Todo.response(400, 'Failed')
     def put(self, todo_id):
         """Todo 리스트에 todo_id와 일치하는 ID를 가진 할 일을 수정"""
         todos[todo_id] = request.json.get('data')
@@ -60,7 +60,7 @@ class TodoSimple(Resource):
         }, 202
     
     @Todo.doc(responses={202: 'Success'})
-    @Todo.doc(responses={500: 'Failed'})
+    @Todo.doc(responses={400: 'Failed'})
     def delete(self, todo_id):
         """Todo 리스트에 todo_id와 일치하는 ID를 가진 할 일을 삭제"""
         del todos[todo_id]
