@@ -1,6 +1,5 @@
 from flask import request
 from flask_restx import Resource, Api, Namespace, fields
-from flask_cors import CORS, corss_origin
 
 
 todos = {}
@@ -68,5 +67,3 @@ class TodoSimple(Resource):
         return {
             "delete" : "success"
         }, 202
-
-CORS(app)
