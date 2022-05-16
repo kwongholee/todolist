@@ -1,6 +1,6 @@
 from flask import request
 from flask_restx import Resource, Api, Namespace, fields
-from flask_cors import CORS, cors_origin
+from flask_cors import CORS, corss_origin
 
 
 todos = {}
